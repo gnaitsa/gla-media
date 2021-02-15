@@ -1,2 +1,0 @@
-file pour check l'init du git et le commiting
- 
