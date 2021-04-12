@@ -62,19 +62,26 @@ CREATE TABLE LIVRE(
    FOREIGN KEY(id_genre) REFERENCES GENRE(id_genre)
 );
 
+CREATE TABLE PRODUIT(
+   id_produit INT,
+   id_dvd VARCHAR(50),
+   id_cd VARCHAR(50),
+   id_livre VARCHAR(50),
+   PRIMARY KEY(id_produit),
+   FOREIGN KEY(id_dvd) REFERENCES DVD(id_dvd),
+   FOREIGN KEY(id_cd) REFERENCES CD(id_cd),
+   FOREIGN KEY(id_livre) REFERENCES LIVRE(id_livre)
+);
+
 CREATE TABLE EMPRUNT(
    id_emprunt INT,
    dateDebut DATE,
    dateRetour DATE,
    prolongeable BOOLEAN,
    recupere BOOLEAN,
-   id_dvd VARCHAR(50),
-   id_cd VARCHAR(50),
-   id_livre VARCHAR(50),
+   id_produit INT NOT NULL,
    id_personne INT NOT NULL,
    PRIMARY KEY(id_emprunt),
-   FOREIGN KEY(id_dvd) REFERENCES DVD(id_dvd),
-   FOREIGN KEY(id_cd) REFERENCES CD(id_cd),
-   FOREIGN KEY(id_livre) REFERENCES LIVRE(id_livre),
+   FOREIGN KEY(id_produit) REFERENCES PRODUIT(id_produit),
    FOREIGN KEY(id_personne) REFERENCES PERSONNE(id_personne)
 );
