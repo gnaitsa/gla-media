@@ -1,28 +1,31 @@
+CREATE DATABASE gla_database;
+
 CREATE TABLE PERSONNE(
-   id_personne INT,
-   nom VARCHAR(64),
+   id_personne INT AUTO_INCREMENT,
    prenom VARCHAR(64),
-   numero VARCHAR(10),
+   nom VARCHAR(64),
+   numero VARCHAR(16),
    adresse VARCHAR(256),
    mail VARCHAR(256),
    birthdate DATE,
    password VARCHAR(64),
-   statut VARCHAR(64),
+   statut VARCHAR(64), -- what's the status of the user (abonne/employe/gestionnaire)
+   locked BOOLEAN, -- is the account locked or not
    dateFinAbo DATE,
    PRIMARY KEY(id_personne)
 );
 
 CREATE TABLE GENRE(
-   id_genre INT,
+   id_genre INT AUTO_INCREMENT,
    nom_genre VARCHAR(64),
    PRIMARY KEY(id_genre)
 );
 
 CREATE TABLE CD(
-   id_cd VARCHAR(50),
+   id_cd INT AUTO_INCREMENT ,
    titre VARCHAR(256),
    description VARCHAR(2048),
-   date_ DATE,
+   date_parution DATE,
    prix DECIMAL(6,2),
    quantite INT,
    compositeur VARCHAR(256),
@@ -33,10 +36,10 @@ CREATE TABLE CD(
 );
 
 CREATE TABLE DVD(
-   id_dvd VARCHAR(50),
+   id_dvd INT AUTO_INCREMENT ,
    titre VARCHAR(256),
    description VARCHAR(2048),
-   date_ DATE,
+   date_parution DATE,
    prix DECIMAL(6,2),
    quantite INT,
    realisateur VARCHAR(256),
@@ -48,11 +51,11 @@ CREATE TABLE DVD(
 );
 
 CREATE TABLE LIVRE(
-   id_livre VARCHAR(50),
+   id_livre INT AUTO_INCREMENT ,
    titre VARCHAR(256),
    description VARCHAR(2048),
-   date_ DATE,
-   prix DECIMAL(6,2),
+   date_parution DATE,
+   prix DECIMAL(6,4),
    quantite INT,
    auteur VARCHAR(256),
    editeur VARCHAR(256),
@@ -63,10 +66,10 @@ CREATE TABLE LIVRE(
 );
 
 CREATE TABLE PRODUIT(
-   id_produit INT,
-   id_dvd VARCHAR(50),
-   id_cd VARCHAR(50),
-   id_livre VARCHAR(50),
+   id_produit INT NOT NULL AUTO_INCREMENT,
+   id_dvd INT,
+   id_cd INT,
+   id_livre INT,
    PRIMARY KEY(id_produit),
    FOREIGN KEY(id_dvd) REFERENCES DVD(id_dvd),
    FOREIGN KEY(id_cd) REFERENCES CD(id_cd),
@@ -74,7 +77,7 @@ CREATE TABLE PRODUIT(
 );
 
 CREATE TABLE EMPRUNT(
-   id_emprunt INT,
+   id_emprunt INT AUTO_INCREMENT,
    dateDebut DATE,
    dateRetour DATE,
    prolongeable BOOLEAN,
