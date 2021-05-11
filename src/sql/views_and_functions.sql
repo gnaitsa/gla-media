@@ -7,15 +7,15 @@
 --
 --
 CREATE OR REPLACE VIEW vue_dvd AS
-SELECT *
+SELECT id_dvd,titre,description,date_parution,prix,quantite,realisateur,editeur,duree,nom_genre
 FROM DVD NATURAL JOIN GENRE;
 
 CREATE OR REPLACE VIEW vue_cd AS
-SELECT *
+SELECT id_cd,titre,description,date_parution,prix,quantite,compositeur,duree,nom_genre
 FROM CD NATURAL JOIN GENRE;
 
 CREATE OR REPLACE VIEW vue_livre AS
-SELECT *
+SELECT id_livre,titre,description,date_parution,prix,quantite,auteur,nb_page,nom_genre
 FROM LIVRE NATURAL JOIN GENRE;
 
 CREATE OR REPLACE VIEW vue_all_abonne AS
@@ -88,19 +88,19 @@ DELIMITER ;
 --
 --
 
-CREATE TRIGGER add_produit_from_livre
+CREATE OR REPLACE TRIGGER add_produit_from_livre
 AFTER INSERT ON LIVRE
 FOR EACH ROW
   INSERT INTO PRODUIT (id_dvd,id_cd,id_livre) VALUES
   (null,null,NEW.id_livre);
 
-CREATE TRIGGER add_produit_from_cd
+CREATE OR REPLACE TRIGGER add_produit_from_cd
 AFTER INSERT ON CD
 FOR EACH ROW
 INSERT INTO PRODUIT (id_dvd,id_cd,id_livre) VALUES
 (null,NEW.id_cd,null);
 
-CREATE TRIGGER add_produit_from_dvd
+CREATE OR REPLACE TRIGGER add_produit_from_dvd
 AFTER INSERT ON DVD
 FOR EACH ROW
 INSERT INTO PRODUIT (id_dvd,id_cd,id_livre) VALUES

@@ -47,7 +47,7 @@ VALUES
 ('Sarah','Derbah','07 05 16 70 20','163 Avenue de la Paix','sarah.derbah@universite-paris-saclay.fr','1987-08-12','villneuve66','abonne',FALSE,'2022-08-12'),
 ('Hugo','Mouden','04 44 57 00 12','11 Avenue de la Soif','hugo.mouden@universite-paris-saclay.fr','1999-01-01','88#spielberg1977','employe',null,null),
 ('Jibril','Zioui','05 15 98 99 69','22 Rue des Rancuniers','jibril.zioui@universite-paris-saclay.fr','2001-05-19','yes','employe',null,null),
-('Rayane','Maza','06 51 13 80 77','78 Autoroute du Soleil','rayane.maza@universite-paris-saclay.fr','2002-07-29','no','grestionnaire',null,null);
+('Rayane','Maza','06 51 13 80 77','78 Autoroute du Soleil','rayane.maza@universite-paris-saclay.fr','2002-07-29','no','gestionnaire',null,null);
 
 
 
